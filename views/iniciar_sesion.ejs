@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <link rel="stylesheet" type="text/css" href="/estilos/header.css">
+
+    <title>Iniciar Sesión</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="/estilos/signin.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center">   
+
+    <%- include('menu') %>
+    
+    <main class="form-signin">
+      <form method="post" action="/iniciar_sesion">
+
+        <img class="mb-4 pr-2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAABCFBMVEX////yjg4tQ1fpUBb4kAceP1mdaj3pTRb//PvqUAX8kgAkQVhxWkXykA4nQ1gWPlrwghBgRkvCeyXoRADtUBHwURDoSADoQAAbQlnqVBX2kAvxhg/64NtPRU3qWRUZP1ntbBPudRL86OI7SFL0sp9uR0dTUE0AO1vVTx/DTSj98u7ugGDvfBGPST4wRVXvhmjjiBTbhCDpixG5dyr3yb2LZD751szzqJHsb0jrYDDtd1TsaT3sZhTxk3f3wrLgTxisTDFjVUqaSjmAYECvczCebDbLfiNFRFF2R0RGTFBuWUaBSEHyoImsZDVlRkn0rZu4TC5ZU0qVSj3BTC2mSzXxmYCISEDYTx006+TSAAAPhUlEQVR4nO2dC1fbuBLHCbYptYlNY8cmpiUtoQECG/IgFEpLNkuSbmhv6Yv2+3+Ta8eS/NLDDnIc9vh/zj177ulu8Y+RZkajkbS2VqhQoUKFChUqVKhQoUKFChUqVKhQoUKFChUq9N/TJkflzYLVwXN+Mk/ypsHowhI4ynqXN09M+yZPQAfxPG+iiDavDL6Egv4yb6aQNq85m1AQDGM/b6qANi+5A64Wog9osPWMLfiX1VZloO5fIQt+fcHU/7aZ2gOMhnmRN9tcFwZ0MsbXHZWl+oZYYqhcqsHfmH6QN50zQr+gOGj8u7POlMQmLJV2EaJ1knd6c3Glw4+pJgFMRljaRf7GvFpWYGzhfpf7J5YfBt8mAUxIWN6tIX9jXWIdTosz4IE1fBd13hdnFnIxhvAiEWBCQseK0N24jO/PI7/f1s2l9Z4roJuy6Ob1/QX8Sa3zhyvdD4LVo09KIsDEhKWSjyiYuvDxBhlt/+bE0A3B4hpLWvOpb+iWtXd5cnJy+dzSzUCaVv22oyYDTEFYfu0jupDW82vnR59c6Zb3q7W4hpKWby7DNM1wDmokcqKpCUvlU+FZ+AeZwZ+tc3VB++SlkWF8W08OmIbQCYwfnhF/LudYSVz8GdWjr4lHaFpCh3F7j8hocl1CnuMJDePobSq+tITuUN17hoc0P/IkvNFjP8AwqsO/X6TkS0/o2vF1DQfJt9JxoCOsqvc/4/jXi/XUfIsQuvNx+/WeEF17mFwD4v2c0Pi58+rfzz9+/PX57audnQXwFiR0Icvl3e3TN45Ot0unc0bjkifhl3m0ML65aweXTV2I7hGEELNcdv7xxiO8zoDw7xRhYV2R6tqO2nak1rW6pKiPJoQCNrziuew48wh/JSVUJU0dDcbTbrfjqNudjje2ZpomqUFCO4GwhNveTMyC8J+E2XW9MZiWbFEEn+j8QxTFUq+y0VQPEaE9rTDVxSLueoQ1nsuLy3muVP2RaAWobE0dOMyX2aLc6ffhn8jNQ42hQ/yQzoLw2iP8zXYwirbVQXiYgeb/f/k7czlCmLSA0ORZi4OETBtqza4MGESx58xAZybaWIM6NoTehyBV0QhuSeBP6NVNqv+ybKhtABvZcmcyaijOSKu3m7cVEfOl4uR2NNs5dN0PxnraoTq7u+3j52EGhM89wrd0QlWpyODruyNNgoPQcayNMcYtiq46lcGsHuNrDCo990/xvhTYUM/AhnRCtd0FphI36pE5pn3vEOKgM4bHEURtUCKxefI+h+siPxGhAgHtOy3+h+tTYqiX+yFEaSDT8LIh9BZP1Vc0QgUi2FuxYedauD4l2kUeBU3e6DEAcyLUJnCITuIWnCO2iV9u9wP/iXTLzOtyIVRGYGjZ3UPCvyI1iaOvF/hv6mPqHHS1lweh1gHfJW8RA7k2JllHDgRajTyaI4Q8S1FMQmkAJ2GXkqkQZ5g8C9iwwwIEhFyLbWwbQhOKGxKZEM3VGGHT/5vrTEeTB6GyBaeYTc0224QBKAaGdp29gMyBMDB3qKmrhk/DwoSsaJgLoYoWfR2SJ50LeVwehFzL+gxCZQsRVvDBEP2bHawRFyNcYrSQJkkJ6/iAkZIwg4hv0gn9aci04YiHDZefedfR2LOndML1HWwsWHnCth+ke1RPQ/Km+RMyVsDBXKVBJ8SXXlISZrDGv6JXMQKEIjkt5UaYRRWDUWsLEIYWQk/IhgxCNZAs99rZ29CrJho866XvvZo3qSKsBWrTpAUwf0KBJyGjqh9ykHaDVuvgSMi15v2RvjMT+mx6SORBuJ3B3hNjd00N1SfEMQWRB2EWu2vv4A4p4bsPQ5mKuEEO+xwI4Q4p1z1gbx/fOCYRSuHFuzjB1RNXmhD0YhyRCNVZOBcTKyoh8PMj5NupAAj/EBfwWj/84WKniZ+MPAi9hje+/TSgJ+oPMQ5EjViy5YmKq0nxIPR6wcwHnoQvPcIhOV+Jl9HEzugw/hvhSMi166sFur4+kYN5PbbnbsuV+FDlQQgKUTdcCb3lk0Er68/i32Lb43aEkQdhjX+pba019JZPXykJmTTCbfTak3ZoOvIgfMa/1La2CRYX1G3uOnbTSOxtBBl55DTP+C/xncUFWD5Rl7fSFr6Q1hvUESMHQpB4W3y79ZM1RWl3JXwprXMLt705EIKWKIsr4NoDIzGFFmoStuvl7kjjRegl3sJzvoT3jMQUSlH6eERb7jckLoSZpKVra+cgMWU3RWm3JTyjMx0PVR6EIGk740t4AZqEE/SVSu0+oVdErjQkDoQgpfnCl3DfI6yyAV0z3nVJZrzDN+OlIgQpDeeDe5uMnYuIGZUBfqja9mDwaE+TRUrjyDuqwu5sg4zqBM8oYnfp0xCCejDngA8rpsR6YlzabCwzmyoWIgS9l7yP552l7vRWtVmF0Mb8KMLTDHqgXSUNiGHG0ZRdok9JCMMh3+OHa6iOMUxD6CQA9a1ekt78NITZhEO0yheoBW2MJGWSYKimIfSCBd8VvquWZ0PjReqzJFqTEB0XI8wqWKxtgi3Ez+lPyyjEVqiFCD1Hk8HFICepjlxEzEhYVS1CCNZOOu9ggdZPPxchXJca+D6a9ITAlQo17oCo7L3YmS6FjpiC8HVGwQKtLoxPCxEyEFMQZuVKHWcKMtP0ztST1ORCCE8icC2WAnn3JFX/Wmgiul9OOZeXnBDm3VncznOywBnEMCL+JFo6QlikyeLKk3vK/pOS5M4IShN+YsIMHQ3afzJi81Cpt78z+oQ8aeXHEwJHw3XfCQrszhjRyr5yNy3LHeKmb5CQeM4g+SitZedo1ta8vYvYIli5dT7JbiapURGHaWLC3cxyNlcf8VnNvGWU2qIPpTYfSwgzmmE2dyuBawf+RD/c3Vazu0mGKfG8RWLCDxk6GrREjG0izpti5WYCX9MmHRZJTOhNQ/M+G8JWDb+Amne1UduEuBHuZrF1GJC3xRbbngFdbfSexOSEGpmwDOK9ldUVZ/f4Wo3XLkTpEkJqkD49eCqoTSH8kMmmjC8Q86uRfgUQBBiNpes0XxokbFBGKYj3nLcsAgKEkeQb9O0xGkvXafEwIWHW0xBNxFjR1Psme8aI+uSzkwFClXwOE0ZDrs3BYYGIGG0cUjwHYk8ZM1EjnruT/b+RdDSqlHk0dAUiYvRUAjzDLA6o45Ty7UFCfLvDnBCkbBlFQ1fgtuBowwI6zCQ2abkb5fir7Ftfwm6/zXWaSZtJWF5qGu3gQx7E7jXImY10R17jy37LrUQsrsJL+MwMAeF2fmSjVEHdUHanTUTcoZSiAmeJSIcwS3DlxLfrMiqwFRytC/sZtd1pEAZqnXynQqnU8ScweSzDPppsLzT14kW0WThw3sLujXDuRqlXKIDB9n7iUW44SLkeQogL1IUj64vg4t0WMa2z9Rm6FAQXMYKnFomZHUxoMr5yH25BhYdp2P+JnVulHvgNKFp7Avct5Amupij6t5souA7HueDyPpsChi+vphgp7quzUKSzxc6kKdU1yZFWV0ZjuEsqlraw3SaBCgExWCBPmu0gRcM0UvrWppGuBFHuTceTjcmkPy3LMJYQO4YCiyetQnI0taUMUnRXazToK3dTOfLp8yvMRLQBbMvdLY3Q9RW4FEslORoY7rMepGiYCtF6lDZzBiPp92+LtsPnYmAJe+jgKTHvBjmpYGZ/vze4yjTeO6Rq7dt+RxZj2/buNW3jpuZNNRxh4LYQckYjLCHcA4Fhius7cVxoc9Dvlubj05Nd6vQHMwXdG4Ul9IOFRkh84MJJX8ZN+w9gmOJb3FT3HrLm3e1g4mgw2Pre0EL3leEIfVdKjBWgmm9cLQEQFRUpHdGqokieYls2WEJ0TRQxKYW798t5fuYSXDjN7YbWHhyk6oywdwP9DOfudZJgSPyc8Bp2FqGf0RCvWYLn05f1SBLoFyae1UtJiIo0kdQoYMLXmZegwgK+hnXJYEJCv7xDXjh5v1K+9+rSBFqi0zUqEgnFO3gUg1RsRKFieS+WnJm45HQxQhQMlegRRl/gyZIl5DNQF4sbMUYowm5HhdTIgEyYXak7rsuFm2uihOItiPaUIgA04XJChSfYtZDeiBFCtCl3SLyPD5owm+4EoqARaQcSExCKcBLSGjSFHEzon6FJHRNDhOjiUrIF/bX9ck3oG/FzSsQgoQy2HBWFUoiDDyNl0FBKF3zTY7iwDcXeFjiw16C0ScOMdKmO1NN7EBNTNg0jQrkPDs9qdz1K1+I2fINt2SZEiU1sRzghYW8GDKiOqT1Qe8Ky0xlfHymLfTaht52qHt6R7oj2xijcE82g6ZmtFjQi+6Z2HGFfW1e0ZoV+rTW8LymnV0kP4PM6acap72lm2qjPOGxSBi8F5fZ4rneeLd04RYT2tMs6TAPHaDYdwUl0scA49W3IPiwEx+iSqjM4fdRTj9M0r5IBP8r3Qqh02hyCcUq+mmdxQvSyXK4vA6Nxmri/PTEh7GHLI5sJ6kvaqZiYEE7C5RVnCIKvVSc9tpeYED62yvX+x0WEXhwfJvM2CQlhwi1Y+b+XewPivvFnPQliwpdWIaDO/TDsAoIhwwn8Sfr1kxAiN2pc5/0c8FzwVW7jmBMhymXyn4SeWiAqug+u8iD0AZdWxWcJLhWTILIJA4D5exmoC4T4k/VuIJMwAJhvqA8LOlShesxAZBH6rwCvhBv1hdaKxhE9LrII0fu4el5rQpLeIcThK9pkZBCix3H1DFudFxRCFAxaDZVGGHhRfeUs6Ooevahb/UWejBTC8hv4F6wmYMDduE+tE+/jJRP6T1Rbq+VkfJ2jZ8EN4zchhSMRlrdrPuAqhYmwXproDfbqcRtrRjxhuRR4Kn6FAn1crWs0GQ3jB242YgmD78Qb5qqkanhtnvlvlFdxz5JjCMu7gUfi9avVSLYpOtANn/E49jR5jNAdoIERerYSyyW6Xl75D7EbMcYIYXk3yGea2ffH8tDmg+Wb0TCOv+4oBEKHz5+Azgi9XvkRCnURMKNjx6PfbWRIn7BcOv0QfPfeNFfZh0a1+cUy/W8XqsO/v4LX5gFh2TFfLchnWO+fjAE97Z8EhqpryOGvF+s7quoSlku7b/aCeK4LzWf/7FE6vw4xOpB/vn3+pG2Ip68jeIJuHjwBF4rRzZUeYnQghaMjIYLn8L1b/iY9L91E7IiRXnvCfK4uLkM+JyLTqj3R8RnU/sMQD2no5skT9C84bZ6fWLoZxbOuD55YfKCqdfNesNDy0dTN6/v/Ep6n1vnDtWNKU7dqZzf/PTyg1s3D2c3Lp+9bChUqVKhQoUKFChUqVKhQoUKFChWK6f/1uv7NDL5unAAAAABJRU5ErkJggg==" width="200" height="200">
+        <h4 class="h3 mb-3 fw-normal header1"> <b>
+
+        Inicar Sesión </b></h4>
+
+        <div class="form-floating">
+          <input type="text" name='username' class="form-control" id="floatingInput" placeholder="Usuario">
+          <label for="floatingInput">Usuario</label>
+        </div>
+        <div class="form-floating">
+          <input type="password" name='password'  class="form-control" id="floatingPassword" placeholder="Contraseña">
+          <label for="floatingPassword">Contraseña</label>
+        </div>
+
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Iniciar sesión</button>
+
+      </form>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.6/dist/sweetalert2.all.min.js"></script>
+
+    <% if (alert) {%>
+      <script>
+        alert( '<%= alertMessage %>' )
+      </script>
+    <% } %>
+
+  </body>
+</html>

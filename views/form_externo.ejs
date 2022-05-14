@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ficha Sintomatologica</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="/estilos/index.css">    
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="/estilos/header.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    </head>
+    <body class="container">
+        <script>
+            var f=   '<%- JSON.stringify(listaFichas) %>';
+            var u =  '<%- JSON.stringify(fichaUltima) %>'; 
+            const fechas= JSON.parse(f);
+            const ultima = JSON.parse(u);
+          </script>
+
+   
+<%- include('menu_apoderado') %>
+
+        <div class="header1" id="bajar">
+            
+            <h2><b>Ficha Externos</b></h2>
+        </div>
+            <div class="mb-2">   
+            <h4>COMPLETAR LA INFORMACIÓN REQUERIDA</h4>
+            <p>
+                Recuerda que debes llenar y enviar el
+                formulario el día anterior a tu asistencia al
+                colegio, según los horarios que se han
+                determinado para cada grupo.<br><br>
+                ¡Juntos contra el Coronavirus!
+            </p>
+
+            </div>
+            <form name = "ficha" method="post" action="/form/new" enctype="multipart/form-data"> 
+                <input type="hidden" name="id" value="<%= externo.id %>" /> 
+                <input type="hidden" name="dni" value="<%= externo.dni %>" /> 
+                <input type="hidden" name="estadoActual" id="estadoActual"  value="1"/> 
+                <label class="form-label">Nombre y apellido del Externo:</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control"
+                    value="<%= externo.nombre + ' ' + externo.apellidop %>" disabled>
+                </div>          
+            </div>
+
+            <p>
+                He sido informado/a sobre el objetivo
+                de este formulario y la definición de
+                los términos que incluye. Me
+                comprometo a responder con la
+                verdad.
+            </p>
+            
+            
+            <div class="mb-3">
+                <div class="row">
+                    <div class="col-9">
+                        <label class="form-label">Indicar la fecha en la cual
+                            asistirá al colegio:</label>
+                        <input name="fechaIngreso" type="date" class="form-control" min ="<%= fechaMin %>" max="<%= fechaMax%>" required/>
+                    </div>   
+                    <div class="col-3 d-flex justify-content-end">
+                        <button id="cargar_ficha" type="button" class="btn btn-success">Cargar anterior</button>
+                    </div>   
+                </div>
+            </div> 
+            
+
+            <div class="card mb-3">
+                <div class="card-header">
+                  <h5>Ficha Sintomatológica del Externo</h5>
+                </div>
+                <div  class="card-body">
+                    <p> En las últimas 24 horas, ¿ha
+                        tenido alguno de los siguientes
+                        síntomas? Puede marcar varias
+                        opciones:</p>
+
+                    <div id ="tabla_personal">
+
+                    </div>
+            
+            
+                        
+                    <div class="mt-3">   
+                        <label class="form-label">Si está bajo medicación, ¿Qué
+                            medicamento(s) está tomando? </label>
+                        <input name="medicina" type="text" class="form-control" />
+                    </div>
+                </div>
+              </div>
+
+    
+        <div class="mb-3">   
+            <label class="form-label">¿Usted (o algún miembro de la familia
+                con los que convive) o su hijo/a se ha
+                realizado alguna prueba de descarte
+                covid-19 en los últimos 14 días?</label>
+                <div class="form-check">
+                    <input class="form-check-input" value="0" type="radio" name="prueba" id="prueba0">
+                        <label class="form-check-label" for="prueba0">
+                        Antígeno (Hisopado Nasofaríngeo)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input"  value="1" type="radio" name="prueba" id="prueba1">
+                        <label class="form-check-label" for="prueba1">
+                        Molecular/PCR
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" value="2" type="radio" name="prueba" id="prueba2">
+                        <label class="form-check-label" for="prueba2">
+                        Antígeno (Saliva o boca)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" value="3" type="radio" name="prueba" id="prueba3" checked>
+                        <label class="form-check-label" for="prueba3">
+                        No me he descartado últimamente
+                    </label>
+                </div>
+                
+            </div>
+            <div class="mb-3">
+                <label for="formFileMultiple" class="form-label">
+                    ¿Cuál fue su resultado? Adjunta aquí
+                    el Certificado/Constancia de la
+                    Prueba de descarte SARS-CoV-2
+                    (Covid-19) (pueden subir hasta 5
+                    documentos)</label>
+                <input class="form-control" name = "files" type="file" id="formFileMultiple" multiple>
+            </div>
+
+        <p>   
+            Al dar click en el boton acepto, afirma que 
+            todos los datos expresados en esta
+            ficha constituyen una declaración
+            jurada de mi parte. He sido informado
+            que el omitir o falsear información
+            constituye una falta grave y puede
+            perjudicar la salud del estudiante y su
+            entorno, por lo cual, asumiré las
+            consecuencias que esto conlleve.
+
+            
+        </p>   
+        <div class="d-flex flex-row-reverse mb-3"> 
+            <a id= "btnRegresar" class="btn btn-warning ">Cancelar</a>
+            <button id = "boton_aceptar" type="submit" class="btn btn-success mr-4">
+                Acepto
+            </button>
+        </div>
+    
+  
+<!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Mensaje del Departamento Médico</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div id ="mensaje_doc" class="modal-body">
+           
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-success">Acepto</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    </form>        
+    <script  src="/js/ficha_sintomatologica.js"></script>   
+    </body>
+</html>

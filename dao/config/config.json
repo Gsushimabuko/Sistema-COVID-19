@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "covidsanjose",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "xqolvwbmsvkxsw",
+    "password": "f22727b2154fa67a040552f1fbc3d69b2ed42a7ca0e955f5db084c8c02958999",
+    "database": "d50qm0pots1tft",
+    "host": "ec2-54-224-64-114.compute-1.amazonaws.com",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": { "rejectUnauthorized": false }
+    }
+  }
+}

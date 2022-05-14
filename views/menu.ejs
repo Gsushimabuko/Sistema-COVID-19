@@ -1,0 +1,144 @@
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" type="text/css" href="/estilos/navbar.css">
+
+
+<body class="container">
+
+
+
+
+    <nav>
+        <div class="navbar">
+          <i class='bx bx-menu'></i>
+          <div class="logo"><a href="/">Sistema COVID-19 SJM</a></div>
+          <div class="nav-links">
+            <div class="sidebar-logo">
+              <span class="logo-name">Sistema COVID-19 SJM</span>
+              <i class='bx bx-x' ></i>
+            </div>
+            <ul class="links">
+              
+              <li><a href="/cambiar_pass">C Pass</a></li>
+
+              <% if (!userPermanente) { %> 
+                <li><a href="/iniciar_sesion">Iniciar sesión</a></li>
+              <% } %>
+                
+          
+              <li><a href="/login_persona">Llenar Ficha</a></li>
+
+
+              <!--DOCTORA-->
+              <li>
+                <a href="#">Desarrollo Doctora</a>
+                <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
+                <ul class="htmlCss-sub-menu sub-menu">
+                  <li><a href="/casos_pendientes">Casos Pendientes</a></li>
+                  <li><a href="/reportes_main">Reportes</a></li>
+                  
+                  <li class="more">
+                    <span><a href="/nivelesriesgo">Niveles de riesgo</a>
+                   
+                  </span>
+                    <ul class="more-sub-menu sub-menu">
+                      <li><a href="/nivelesriesgoalumnos/-1">Alumnos</a></li>
+                      <li><a href="/nivelesriesgopersonal/-1">Personal</a></li>
+                      <li><a href="/nivelesriesgoexternos">Externos</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              
+
+
+                <!--SISTEMAS-->
+            
+              <li>
+                  <a href="#">Desarrollo Sistemas</a>
+                  <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
+                  <ul class="htmlCss-sub-menu sub-menu">
+
+                      <li><a href="/subir">Subir archivos</a></li>
+                      
+                      <li class="more">
+                        <span><a href="/gestion">Gestion Personas</a>
+                       
+                      </span>
+                        <ul class="more-sub-menu sub-menu">
+                          <li><a href="/gestionalumnos/-1">Alumnos</a></li>
+                          <li><a href="/gestionpersonal/-1">Personal</a></li>
+                          <li><a href="/gestionexternos">Externos</a></li>
+                          <li><a href="/eliminarusuarios">Eliminar usuarios</a></li>
+                        </ul>
+                      </li>
+                  </ul>
+              </li>
+
+                <% if (userPermanente) { %> 
+                  <li><a type="button" class="btn-danger mr-2" href="/cerrar_sesion">Cerrar Sesion</a></li>
+                <% } %>
+                  
+                
+            
+               
+
+
+
+            </ul>
+          </div>
+          <div class="search-box">
+            <i class='bx bx-search'></i>
+           
+          </div>
+        </div>
+      </nav>
+
+
+    <script>
+         // search-box open close js code
+let navbar = document.querySelector(".navbar");
+let searchBox = document.querySelector(".search-box .bx-search");
+// let searchBoxCancel = document.querySelector(".search-box .bx-x");
+
+searchBox.addEventListener("click", ()=>{
+  navbar.classList.toggle("showInput");
+  if(navbar.classList.contains("showInput")){
+    searchBox.classList.replace("bx-search" ,"bx-x");
+  }else {
+    searchBox.classList.replace("bx-x" ,"bx-search");
+  }
+});
+
+// sidebar open close js code
+let navLinks = document.querySelector(".nav-links");
+let menuOpenBtn = document.querySelector(".navbar .bx-menu");
+let menuCloseBtn = document.querySelector(".nav-links .bx-x");
+menuOpenBtn.onclick = function() {
+navLinks.style.left = "0";
+}
+menuCloseBtn.onclick = function() {
+navLinks.style.left = "-100%";
+}
+
+
+// sidebar submenu open close js code
+let htmlcssArrow = document.querySelector(".htmlcss-arrow");
+htmlcssArrow.onclick = function() {
+ navLinks.classList.toggle("show1");
+}
+let moreArrow = document.querySelector(".more-arrow");
+moreArrow.onclick = function() {
+ navLinks.classList.toggle("show2");
+}
+let jsArrow = document.querySelector(".js-arrow");
+jsArrow.onclick = function() {
+ navLinks.classList.toggle("show3");
+}
+
+    </script>
+
+    -->

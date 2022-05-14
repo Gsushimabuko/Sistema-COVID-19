@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Control de Entrada Casos Covid</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="/estilos/index.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="/estilos/header.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    </head>
+    <body class="container">
+       
+    <%- include('menu_apoderado') %>
+        
+
+        <div class=" header1 col"  id="bajar">
+          <h2>
+            <b>
+              Hola<%= " "+ persona.nombre %>
+              
+            </b>
+          </h2> 
+        </div>
+        
+        <div class="row mb-3">
+          
+
+          <div class="d-flex justify-content-center h-25">
+            
+
+            <a type="button" class="btn btn-outline-danger mr-2" href="/cerrar_sesion_apoderado">Cerrar Sesion</a>
+
+          </div>
+          
+          
+          
+        </div>
+        
+        <div class="row mb-3">
+          <div class="col">
+          <% if (persona.esApoderado ==1 ) { %>
+            <div class="card">
+                <div class="card-body">
+
+                  <div class="header2">
+                    <h4>
+                      <b>
+                        Llenar Ficha de Estudiante
+
+                      </b>
+                    </h4>
+                  </div>
+
+
+                  <table class="table">
+                    <thead>  
+
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellidos</th>  
+                            <th>Acciones</th>
+                        </tr>                      
+                    </thead>               
+                    <tbody> 
+                        <% hijos.forEach( (i)=> { %>
+                            <tr>
+                                <td><%= i.nombre %> </td> 
+                                <td><%= i.apellidop +" "+ i.apellidom %> </td> 
+                                <td>
+                                    <div>
+                                      <% if ( i.estado > 2 ) { %>
+                                         Inhabilitado
+                                        <%} else { %> 
+                                        <a href="/form/estudiante/<%= i.id %>">Llenar ficha</a>
+                                        <%} %> 
+                                      </div>
+                                </td> 
+                            </tr>                      
+                        <% }) %>                 
+                    </tbody>
+                  </table>
+
+                </div>
+
+            </div>
+            
+            
+
+          </div>
+          
+          <div class="col">
+
+            <div class="card cuadro">
+
+              <%   if (persona.estado > 1  ) { %> 
+
+             
+                <div class="card-body">
+                  <img class="img-fluid logo-ios mb-3" src="https://cdn-icons-png.flaticon.com/512/458/458594.png" alt="">
+                  <p class="card-text text-center"><b>Inhabilitado</b>
+                    <p>
+                    Situación de riesgo actual no le permite llenar ficha
+                  </p></p>
+                </div>
+   
+
+              <% } else { %> 
+              <a href="/form/externo/<%= persona.id %>" class="card-link">
+                <div class="card-body">
+                  <img class="img-fluid" src="https://cdn-icons-png.flaticon.com/512/3048/3048150.png">
+                  <div class="header2">
+                    <h4>
+                      <b>
+                     Llenar ficha de externo
+                      </b>
+                    </h4>
+                </div>
+              </a>
+              <% } %>
+              
+            </div>
+
+          </div>
+
+          <% } %>
+          
+          <% if (persona.esPersonal == 1 ) { %>  
+
+          <div class="col">
+
+            <div class="card cuadro">
+              <% if (persona.estado > 1  ) { %> 
+          
+                <div class="card-body">
+                  <img class="img-fluid logo-ios mb-3" src="https://cdn-icons-png.flaticon.com/512/458/458594.png" >
+                  <p class="card-text text-center">
+                    <b>Inhabilitado</b>
+                    <p>
+                    Situación de riesgo actual no le permite llenar ficha
+                  </p>
+                </div>
+   
+              <% } else { %> 
+                <a href="/form/personal/<%= persona.id %>" class="card-link">
+                  <div class="card-body">
+                    
+                    <img class="img-fluid" src="https://i.pinimg.com/564x/55/69/55/5569554b4d8a9bb11965949e1af08dbf.jpg">
+                    <div class="header2">
+                      <h4>
+                        <b>
+                       Llenar ficha de personal
+                        </b>
+                      </h4>
+
+
+                    </div>
+                 
+                    </div>
+                </a> 
+                <% } %> 
+            </div>
+
+          </div>
+
+          <% } %>   
+        </div>     
+        
+        <a class="btn btn-warning btn-lg mt-2" href="/qr">
+          Generar QR entrada
+       </a>
+        
+
+        <%- include('footer') %>
+        
+    </body>
+</html>

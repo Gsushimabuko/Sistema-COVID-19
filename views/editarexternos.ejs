@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Gestionar externos</title>
+    <link rel="stylesheet" type="text/css" href="/estilos/header.css">
+</head>
+<body class="container">
+    <%- include('menu') %>
+    <div class="header1" id="bajar">
+        
+        <h2><b>Editar Externo</b></h2>
+    </div>
+
+    <form method="post" action="/editarexternos/<%= alumno.id %>">
+        
+        <label class="form-label">DNI:</label>
+        <input name="dni" type="text" class="form-control" value="<%= alumno.dni %>"/>
+
+        <label class="form-label">Nombre:</label>
+        <input name="nombre" type="text" class="form-control" value="<%= alumno.nombre %>"/>
+
+        <label class="form-label">Apellido paterno:</label>
+        <input name="apellidop" type="text" class="form-control" value="<%= alumno.apellidop %>"/>
+            
+        <label class="form-label">Apellido materno:</label>
+        <input name="apellidom" type="text" class="form-control" value="<%= alumno.apellidom %>" />
+          
+
+        <label class="form-label">Teléfono:</label>
+        <input name="telefono" type="text" class="form-control"  value="<%= alumno.telefono %>"   />
+
+        <div>
+            <div class="mt-2 mb-2">
+
+                <b >Hijos</b>
+        
+                <table class="table">
+                    <thead>
+                        <tr>
+        
+                            <th>ID</th>
+                            <th>DNI</th>
+                            <th>Nombre</th>
+                            <th>Apellido Paterno</th>
+                            <th>Apellido Materno</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                            
+                            <% hijos.forEach( (hijo)=> { %>
+                                <tr>
+                                    <td> <%= hijo.id %> </td>
+                                    <td> <%= hijo.dni %> </td>
+                                    <td> <%= hijo.nombre %> </td>
+                                    <td> <%= hijo.apellidop %> </td>
+                                    <td> <%= hijo.apellidom %> </td>
+            
+                                </tr>
+        
+                            <% }) %>
+                                    
+                        
+                    </tbody>
+                </table>
+            </div>
+
+
+
+        </div>
+            
+        <button type="submit" class="btn btn-warning mt-2">Guardar</button>
+
+    </form>
+    <%- include('footer') %>
+
+</body>
+</html>

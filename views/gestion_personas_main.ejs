@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/estilos/header.css">
+    <title>Gestionar personas</title>
+</head>
+<body class="container">
+    <%- include('menu') %>
+    <div class="header1" id="bajar">
+        <h2>
+            
+            <b>
+                Gestionar Personas 
+            </b>
+        </h2>
+    </div>
+
+    <div class="card">
+
+        <div class="card-header">
+
+            <b>
+                Elegir acción 
+            </b>
+        </div>
+
+
+        <div class="card-body">
+
+            <div>
+                <a class="btn btn-dark mb-2 btn-block" href="/gestionalumnos/-1">
+                    Gestionar Alumnos
+                </a>
+                
+            </div>
+
+            <div>
+                <a class="btn btn-dark mb-2 btn-block" href="/gestionpersonal/-1">
+                    Gestionar Personal
+                </a>
+
+            </div>
+
+            <div>
+                <a class="btn btn-dark mb-2 btn-block" href="/gestionexternos">
+                    Gestionar Externos
+                </a>
+                
+            </div>
+        </div>
+
+    </div>
+
+    <%- include('footer') %>
+
+</body>
+</html>

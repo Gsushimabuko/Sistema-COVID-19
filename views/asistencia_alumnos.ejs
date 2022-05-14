@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+   
+    <link rel="stylesheet" type="text/css" href="/estilos/header.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <script
+  src="http://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" ></script>
+    
+
+
+
+    <title>Ver asistencia</title>
+
+    
+</head>
+
+    
+    
+    <body class="container">
+    
+        
+        <%- include('menu') %>
+        
+        
+        <div class="header1" id="bajar">
+            <b>
+                Lista de asistencias (Escaneos QR)
+            </b>
+        </div>
+        <div class="header1" style="text-align: left;" id="bajar">
+            <h3><%= moment(fecha).format('L') %> MES/DÍA/AÑO </h3>
+        </div>
+
+
+        <table class="table table-fluid" id="myTable">
+                
+            <thead>
+                
+                
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Número de puerta</th>
+                    <th>Primer escaneo</th>           
+                    <th>Número de puerta</th>          
+                    <th>Último escaneo</th>           
+                    <th>Otras asistencias</th>           
+                            
+                </tr>
+                
+            </thead>
+            
+            
+            
+            <tbody id="cuerpoAlta">
+                
+
+                <% asistencia.forEach( (alumno)=> { %>
+                        <tr>
+                            
+                            <td> <%= alumno.nombre %> </td>
+                            <td> <%= alumno.apellidop %> </td>
+                            <% if(alumno.primerPase == "-"){ %>
+                                <td>AUSENTE</td>
+                                <td>AUSENTE</td>
+                                <td>AUSENTE</td>
+                                <td>AUSENTE</td>
+                            <%} else {%>
+                                <td> <%= alumno.primerPase.estado %> </td>
+                                <td><%= moment(alumno.primerPase.fechaHora).format().substring(0,10) +" | " + moment(alumno.primerPase.fechaHora).format().substring(11,19)  %> </td> 
+                                <td> <%= alumno.ultimoPase.estado %> </td>
+                                <td><%= moment(alumno.ultimoPase.fechaHora).format().substring(0,10) +" | " + moment(alumno.ultimoPase.fechaHora).format().substring(11,19) %> </td> 
+                            <%}%>
+                                <td> <a href="/asistencias_individuales/<%=alumno.id%>"> Ver </a> </td>
+                        </tr> 
+                    <% }) %>
+                           
+                            
+                            
+            </tbody>
+                
+                
+        </table>
+      
+        <script>
+            $(document).ready( function () {
+            $('#myTable').DataTable();
+        } );
+            </script>
+
+    </body>
+
+    
+</html>

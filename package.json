@@ -1,0 +1,52 @@
+{
+  "name": "ProyectoCovid",
+  "version": "1.0.0",
+  "description": "prueba de subida",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "start:dev": "npx nodemon index.js",
+    "db:drop": "npx sequelize db:drop --config ./dao/config/config.json",
+    "db:create": "npx sequelize db:create --config ./dao/config/config.json",
+    "db:migrate": "npx sequelize db:migrate --config ./dao/config/config.json --migrations-path ./dao/migrations",
+    "db:seed": "npx sequelize db:seed:all --config ./dao/config/config.json --seeders-path ./dao/seeders"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonathanCardenasR/Proyecto-Covid.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JonathanCardenasR/Proyecto-Covid/issues"
+  },
+  "homepage": "https://github.com/JonathanCardenasR/Proyecto-Covid#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.1",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^14.3.2",
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "express-fileupload": "^1.2.1",
+    "express-session": "^1.17.2",
+    "express-static": "^1.2.6",
+    "fs": "0.0.1-security",
+    "googleapis": "^39.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
+    "qrcode": "^1.5.0",
+    "sequelize": "^7.0.0-next.1",
+    "sequelize-cli": "^6.3.0",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.4.0",
+    "xlsx": "^0.17.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

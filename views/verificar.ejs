@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Control de Entrada Casos Covid</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="/estilos/index.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="/estilos/alert.css">
+
+        
+    </head>
+    <body class="container">
+        
+        
+        
+         <% if (estado ==0 ) { %>
+                         
+        
+        
+
+            <div class="popup center">
+                <div class="icon">
+                    <i class="fa fa-check"></i>
+                </div>
+                <div class="title">
+                    Entrada Permitida
+                </div>
+                <div class="description">
+                
+                    <%= persona.nombre +" "+ persona.apellidop %> puede ingresar al colegio
+                
+                </div>
+                <div class="dismiss-btn">
+                    
+                        <button id="dismiss-popup-btn"> 
+                            Volver
+                        </button>
+                    
+                </div>
+            </div>
+        
+
+        
+          
+        <%} else if (estado == 1 ) { %>
+            <div class="popup center">
+                <div class="icon_danger">
+                    <i class="fa fa-window-close"></i>
+                </div>
+                <div class="title">
+                    Entrada Restringida
+                </div>
+                <div class="description">
+                   
+                    <%= persona.nombre +" "+ persona.apellidop %> 
+                    no puede ingresar.
+                    Comuniquese con la Doctora para regularizar su situación.
+                </div>
+                <div class="dismiss-btn">
+                   
+                        <button id="dismiss-popup-btn"> 
+                            Volver
+                        </button>
+                   
+                </div>
+            </div>
+        <%} else { %>
+            
+            <div class="popup center">
+                <div class="icon_warn">
+                    <i class="fa fa-exclamation-triangle"></i>
+                </div>
+                <div class="title">
+                    Entrada Restringida
+                </div>
+                <div class="description">
+                   
+                    <%= persona.nombre +" "+ persona.apellidop %> debe llenar su Ficha Sintomatológica para ingresar
+                </div>
+                <div class="dismiss-btn">
+                   
+                        <button id="dismiss-popup-btn"> 
+                            Volver
+                        </button>
+                    
+                </div>
+            </div>
+            <%} %>
+
+    <script  src="/js/verificar.js"></script> 
+    <script  src="/js/alert.js"></script>    
+        
+    </body>
+</html>

@@ -1,0 +1,33 @@
+[
+    {
+        "nombre": "Inicial",
+        "puerta": 1,
+        "imagen": "https://cdn-icons-png.flaticon.com/512/59/59805.png"
+    },
+    {
+        "nombre": "Primaria",
+        "puerta": 2,
+        "imagen": "https://cdn-icons-png.flaticon.com/512/59/59805.png"
+    },
+    {
+        "nombre": "Hall",
+        "puerta": 3,
+        "imagen": "https://cdn-icons-png.flaticon.com/512/59/59805.png"
+    },
+    {
+        "nombre": "Secundaria",
+        "puerta": 4,
+        "imagen": "https://cdn-icons-png.flaticon.com/512/59/59805.png"
+    },
+    {
+        "nombre":"Movilidades",
+        "puerta": 5,
+        "imagen": "https://cdn-icons-png.flaticon.com/512/59/59805.png"
+    },
+    {
+        "nombre": "Otro",
+        "puerta": 6,
+        "imagen": "https://cdn-icons-png.flaticon.com/512/59/59805.png"
+    }
+
+]

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/estilos/header.css">
+    <title> Historial COVID-19 </title>
+
+</head>
+<body class="container">
+    <%- include('menu') %>
+    <div class="header1" id="bajar">
+       
+           <h2><b>
+            Historial COVID-19 
+           </b></h2>
+
+       </a> 
+    </div>
+
+    
+
+    <div class="card mt-2">
+        
+        <div class="card-header">
+            <b>
+               Datos de la persona
+            </b>
+        </div>
+
+        <div class="card-body">
+            <table class="table">
+                <thead>
+
+
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido Paterno</th>
+                        <th>Apellido Materno</th>
+                        <th>Estado</th>
+                        <th>Comsumo de medicamentos</th>
+                       
+                        
+                    </tr>
+                    
+                </thead>
+                
+                
+            
+                <tbody>
+
+                   
+
+                        <tr>
+                         
+                            <td><%= persona.nombre %> </td> 
+                            <td><%= persona.apellidop %> </td> 
+                            <td><%= persona.apellidom %> </td> 
+                           <% if(persona.estado == 1) {%>
+                            <td> Alta </td> 
+                            <% }else if(persona.estado == 2) {%>
+                                <td> Contacto con confirmado </td> 
+                            <% }else if(persona.estado == 3) {%>
+                                <td> Observado </td> 
+                            <% }else if(persona.estado == 4) {%>
+                                <td> Contagiado </td> 
+                               <% }%>
+
+                            <td><%= persona.otro %> </td> 
+                            
+                        
+
+                        </tr>
+
+                
+                            
+                      
+
+                </tbody>
+
+
+            </table>
+            
+        </div>
+
+    </div>
+
+    
+    <div class="card mt-2">
+        
+        <div class="card-header">
+            <b>
+               Historial
+            </b>
+        </div>
+
+        <div class="card-body">
+            <table class="table">
+                <thead>
+
+
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Título</th>
+                        <th>Descripción</th>
+                        
+                    </tr>
+                    
+                </thead>
+                
+                <tbody>
+                    <% hitos.forEach( (i)=> { %>
+
+                        <tr>
+                            <td><%= i.fecha.toISOString().substring(0,10) %></td> 
+                            <td><%= i.titulo %> </td> 
+                            <td><%= i.descripcion %> </td> 
+                         
+                            
+                    <% }) %>
+                </tbody>
+            
+
+
+            </table>
+            
+        </div>
+
+    </div>
+
+    <a class="btn btn-info btn-sm mt-2" href="/agregarhito/<%=persona.id%>">
+        Agregar hito
+    </a> 
+    <a class="btn btn-info btn-sm mt-2" href="/fichas_llenadas/<%=persona.id%>">
+        Ver fichas
+    </a> 
+
+    
+     
+    <%- include('footer') %>
+</body>
+</html>

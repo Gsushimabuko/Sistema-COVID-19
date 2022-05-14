@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Gestionar personas</title>
+    <link rel="stylesheet" type="text/css" href="/estilos/header.css">
+</head>
+<body class="container">
+    <%- include('menu') %>
+    <div class="header1" id="bajar">
+        
+        <h2><b>Agregar Personal</b></h2>
+    </div>
+
+    <form method="post" action="/agregarpersonal">
+
+        <div>
+            <label class="form-label">Sección:</label>
+            <select name="grupo" class="form-select" required>
+                <option value="all">----Elija la área----</option>
+                
+                <% salones.forEach( (i)=> { %>
+        
+                <option value="<%= i.id %>"> <%= i.nombre %> </option>
+        
+                    
+                <% }) %>
+    
+            </select>
+
+        </div>
+        
+        <label class="form-label">DNI:</label>
+        <input name="dni" type="text" class="form-control mb-2"required />
+
+        <label class="form-label">Nombre:</label>
+        <input name="nombre" type="text" class="form-control mb-2"required />
+
+        <label class="form-label">Apellido paterno:</label>
+        <input name="apellidop" type="text" class="form-control mb-2"required />
+            
+        <label class="form-label">Apellido materno:</label>
+        <input name="apellidom" type="text" class="form-control mb-2"required />
+            
+
+
+        <label class="form-label">Teléfono:</label>
+        <input name="telefono" type="text" class="form-control mb-2" />
+
+        
+
+        <div id="wrapper mb-4">
+            <label>¿Es apoderado?</label>
+            <select class="form-select" name="esApoderado">
+                <option value="1">Sí</option>
+                <option selected value="0">No</option>
+            </select>
+        
+        </div>
+  
+  
+
+        
+        <div class="card mt-2">
+            <div class="card-header">
+              Antecedentes
+            </div>
+            <div class="card-body">
+                <div class="form-check">
+                    <input class="form-check-input" name="am1" type="checkbox" value="1" id="am1">
+                    <label class="form-check-label" for="am1">
+                        Rinitis Alérgica/vasomotora (o alergia
+                        a la humedad, polvo, mascarilla, polen,
+                        etc.)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="am2" type="checkbox" value="1" id="am2">
+                    <label class="form-check-label" for="am2">
+                        Migraña o dolores de cabeza
+                        frecuentes (estrés, exposición al sol, etc.)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="am3" type="checkbox" value="1" id="am3">
+                    <label class="form-check-label" for="am3">
+                        Asma o Bronquitis Alérgica
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="am4" type="checkbox" value="1" id="am4">
+                    <label class="form-check-label" for="am4">
+                        Síndrome Intestino Irritable, Enf.
+                        Chron u otras
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="am5" type="checkbox" value="1" id="am5">
+                    <label class="form-check-label" for="am5">
+                        Diabetes
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="am6" type="checkbox" value="1" id="am6">
+                    <label class="form-check-label" for="am6">
+                        Alguna enfermedad congénita
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="am7" type="checkbox" value="1" id="am7">
+                    <label class="form-check-label" for="am7">
+                        Alguna enfermedad autoinmune o que
+                    requiera medicamentos inmunosupresores
+                 
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="am8" type="checkbox" value="1" id="am8">
+                    <label class="form-check-label" for="am8">
+                        No tiene antecedentes
+                    </label>
+                </div>
+
+                <label class="form-label">Otro:</label>
+                <input name="otro" type="text" class="form-control mb-2" />
+
+            </div>
+          </div>
+
+
+       
+        <button type="submit" class="btn btn-success mt-2">Guardar</button>
+
+    </form>
+
+    <%- include('footer') %>
+            
+        
+
+    
+     
+
+</body>
+</html>

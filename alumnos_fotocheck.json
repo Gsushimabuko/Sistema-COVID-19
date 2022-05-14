@@ -1,0 +1,182 @@
+
+[
+    null,
+ {
+  "COLEGIO SAN JOSE DE MONTERRICO": null,
+  "Column2": null,
+  "Column3": null,
+  "Column4": null,
+  "Column5": null,
+  "Column6": null
+ },
+ {
+  "COLEGIO SAN JOSE DE MONTERRICO": null,
+  "Column2": null,
+  "Column3": "RELACION DE ALUMNOS QUE NO TIENEN FOTOCHECK AL 25.03",
+  "Column4": null,
+  "Column5": null,
+  "Column6": null
+ },
+ {
+  "COLEGIO SAN JOSE DE MONTERRICO": "N°",
+  "Column2": "APELLIDO PATERNO",
+  "Column3": "APELLIDO MATERNO ",
+  "Column4": "NOMBRES",
+  "Column5": "GRADO Y SECCION",
+  "Column6": "DNI"
+ },
+ {
+  "COLEGIO SAN JOSE DE MONTERRICO": 1,
+  "Column2": "CAMPOS ",
+  "Column3": "GRAHAM",
+  "Column4": "Joaquín",
+  "Column5": "4 años B",
+  "Column6": 90239095
+ },
+ {
+  "COLEGIO SAN JOSE DE MONTERRICO": 2,
+  "Column2": "RODRIGUEZ ",
+  "Column3": "VENEGAS",
+  "Column4": "Cristobal",
+  "Column5": "5 años B ",
+  "Column6": 79583788
+ },
+ {
+  "COLEGIO SAN JOSE DE MONTERRICO": 3,
+  "Column2": "DURAND ",
+  "Column3": "HALABI",
+  "Column4": "Amaia",
+  "Column5": "5 años C ",
+  "Column6": 79956130
+ },
+ {
+  "COLEGIO SAN JOSE DE MONTERRICO": 4,
+  "Column2": "RAMOS ",
+  "Column3": "DUEÑAS",
+  "Column4": "Facundo Salvador ",
+  "Column5": "5 años C",
+  "Column6": 79904862
+ },
+ {
+  "COLEGIO SAN JOSE DE MONTERRICO": 5,
+  "Column2": "REYNOSO ",
+  "Column3": "ORTIZ",
+  "Column4": "Gabriel Alejandro",
+  "Column5": "1er grado C",
+  "Column6": 79050093
+ },
+ {
+  "COLEGIO SAN JOSE DE MONTERRICO": null,
+  "Column2": "SUÁREZ",
+  "Column3": "BELLIDO",
+  "Column4": "Ignacio Alejandro",
+  "Column5": "1er grado C",
+  "Column6": 79203376
+ },
+ {
+  "COLEGIO SAN JOSE DE MONTERRICO": 6,
+  "Column2": "PINASCO",
+  "Column3": "GUEVARA",
+  "Column4": "Alessandro Vittorio",
+  "Column5": "1er grado D",
+  "Column6": 78951719
+ },
+ {
+  "COLEGIO SAN JOSE DE MONTERRICO": 7,
+  "Column2": "MERINO ",
+  "Column3": "ANGULO",
+  "Column4": "Dario Adrian",
+  "Column5": "2do grado D",
+  "Column6": 78997230
+ },
+ {
+  "COLEGIO SAN JOSE DE MONTERRICO": 8,
+  "Column2": "BURMESTER",
+  "Column3": "GARCIA ",
+  "Column4": "Astrid",
+  "Column5": "4to grado B",
+  "Column6": 77889286
+ },
+ {
+  "COLEGIO SAN JOSE DE MONTERRICO": 9,
+  "Column2": "MEDINA ",
+  "Column3": "GELDRES ",
+  "Column4": "Flavia Rafaella",
+  "Column5": "4to grado D",
+  "Column6": 77760445
+ },
+ {
+  "COLEGIO SAN JOSE DE MONTERRICO": 10,
+  "Column2": "REYES",
+  "Column3": "ESCUDERO",
+  "Column4": "Ignacio",
+  "Column5": "4to grado D",
+  "Column6": 77881439
+ },
+ {
+  "COLEGIO SAN JOSE DE MONTERRICO": 11,
+  "Column2": "CARPIO ",
+  "Column3": "CORIMAYA",
+  "Column4": "Boris Fabrizio",
+  "Column5": "1er año A",
+  "Column6": 73287509
+ },
+ {
+  "COLEGIO SAN JOSE DE MONTERRICO": 12,
+  "Column2": "PEREZ ",
+  "Column3": "CHAVEZ FERNANDEZ",
+  "Column4": "Faina",
+  "Column5": "1er año A",
+  "Column6": 92412371
+ },
+ {
+  "COLEGIO SAN JOSE DE MONTERRICO": 13,
+  "Column2": "OBANDO ",
+  "Column3": "ULLOA",
+  "Column4": "Xaviera Maybe",
+  "Column5": "2do año D",
+  "Column6": 72341253
+ },
+ {
+  "COLEGIO SAN JOSE DE MONTERRICO": 14,
+  "Column2": "OBANDO ",
+  "Column3": "ULLOA",
+  "Column4": "Mateo Daniel",
+  "Column5": "5to grado B",
+  "Column6": 62945910
+ },
+ {
+  "COLEGIO SAN JOSE DE MONTERRICO": 14,
+  "Column2": "-------",
+  "Column3": "-------",
+  "Column4": "-------",
+  "Column5": "--------",
+  "Column6": 1111111
+ },
+ {
+  "COLEGIO SAN JOSE DE MONTERRICO": 14,
+  "Column2": "RUBIO",
+  "Column3": "SAAVEDRA",
+  "Column4": "Mateo Alonso",
+  "Column5": "4to año D",
+  "Column6": 70527132
+ },
+ {
+  "COLEGIO SAN JOSE DE MONTERRICO": 14,
+  "Column2": "LINO",
+  "Column3": "BECERRA",
+  "Column4": "MATEO DANIEL",
+  "Column5": "5 GRADO B",
+  "Column6": 62945910
+ },
+ {
+    "COLEGIO SAN JOSE DE MONTERRICO": 14,
+    "Column2": "BENDEZÚ",
+    "Column3": "BENDEZÚ PACHECO",
+    "Column4": "FABRIZIO",
+    "Column5": "4to año A",
+    "Column6": 60797807
+   }
+
+ 
+]

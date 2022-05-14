@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/estilos/index.css">
+    <link rel="stylesheet" type="text/css" href="/estilos/header.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <title>Niveles de riesgo alumnos</title>
+
+
+
+</head>
+<body class="container">
+
+  <!--MODAL PERSONAS -->
+  <div class="modal fade" id="myModal2">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>
+                   <b>
+                       
+                    Se movieron a las siguientes personas de la familia por precaución a la lista CONTACTO CON CONFIRMADOS
+                   </b>
+                </h4>
+                    
+            </div>
+            <div class="modal-body">
+                Personas afectadas: 
+                <%= personasAfectadas %>
+            </div>
+            
+        </div>
+    </div>
+
+  </div>
+
+
+<input id="personasAfectadas" value="<%= personasAfectadas %>" type="hidden">
+
+<script>
+  const inputAfectadas = document.getElementById("personasAfectadas")
+   if(inputAfectadas.value != ""){
+    $(document).ready( function () { 
+    $('#myModal2').modal("show"); 
+} )
+   }
+
+</script>
+
+
+
+
+  <!--Pop up-->
+  <script>
+      function enviar(numero) {
+          const formEnviar = document.getElementById("cambios")
+          const cantidad = document.getElementById("cantidad")
+          cantidad.value = numero
+          formEnviar.submit()
+      }
+  </script>
+
+  <!-- DATOS PARA EL ENDPOINT -->
+
+    <form method="post" action="/nivelesriesgoalumnos" id="cambios">
+                        
+    <input id="listaAEnviar" name="numerolista" type="hidden">
+    <input id="idACambiar" name="idcambio" type="hidden">
+    <input id="cantidad" name="cantidad" type="hidden">
+
+    </form>
+
+  <div class="modal fade" id="myModal1">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header header1">
+                <h4><b>¡ATENCIÓN!</b></h4>
+            </div>
+            <div class="modal-body">
+                    Si quiere mover a SOLO A LA PERSONA SELECCIONADA, seleccione MOVER A SOLO A LA PERSONA SELECCIONADA
+                    <br>
+                    Si quiere mover a TODAS LAS PERSONAS DEL GRUPO, seleccione MOVER A TODO EL GRUPO
+                    <br>
+                    Si se mueve a alguna persona a la lista de CASOS CONFIRMADOS, se moverá a su familia a la lista de CONTACTO CON CONFIRMADOS
+            </div>
+            <div class="modal-footer ">
+                <div class="text-center">
+                    <button class="btn btn-primary" onclick="enviar(0)" >Mover solo a la persona seleccionada</button>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary" onclick="enviar(1)">Mover a todo el grupo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  </div>
+
+<div class="mb-2">
+
+    <%- include('menu') %>
+</div>
+    <div class="header1"  id="bajar">
+       
+        <h1>
+            <b>Niveles de riesgo alumnos</b>
+        </h1>
+
+       
+    </div>
+
+    <div class="header2">
+        
+            <h2>
+                <b> Listas de riesgo</b>
+            </h2> 
+        
+    </div>
+
+    <form method="post" action="/nivelesriesgoalumnos" id="filtro">
+        <script>
+        const myFunction = () =>{
+            console.log("Cambiando")
+            const filtroForm = document.getElementById("filtro")
+            filtroForm.submit()
+        }
+        </script>
+        
+        <label class="form-label">Sección:</label>
+        <select name="grupoId" class="form-select" onchange="myFunction()" class="form-select">
+            
+
+            <option value="-1">------Mostrar Todos-----</option>
+
+                <% grupos.forEach( (i)=> { %>
+                    <% if(nombreSalon==i.nombre) { %>
+                        
+                    <option selected value="<%= i.id %>"> <%= i.nombre %> </option>
+                        
+                    <%  }else{ %>
+
+                    <option value="<%= i.id %>"> <%= i.nombre %> </option>
+                    
+                    <% } %>
+
+                <% }) %>
+                
+                    
+                    
+          
+        </select>
+
+        <div>
+
+        </div>
+    <!--
+        <button type="submit" class="btn btn-primary btn-sm mb-2" >Buscar</button>
+    -->
+
+    </form>
+
+    
+    <div class="mt-2 mb-2">
+        
+        <button id="bt1" class="btn btn-success">Mostrar personas saludables</button>
+    </div>
+    <div class="card mt-2 mb-2" id="toggle1">
+        
+        <div class="card-header text-white bg-success">
+            <b>
+                Personas saludables
+            </b>
+        </div>
+        
+        <div class="card-body">
+            <table class="table" id="myTable1">
+                <thead>
+                    
+
+                    <tr>
+                        <th>DNI</th>
+                        <th>Nombre</th>
+                        <th>Apellido Paterno</th>
+                        <th>Apellido Materno</th>
+                       
+                        <th>Teléfono</th>
+                        <th>Historial</th>
+                        <th>Actualizar estado de salud</th>
+                        
+                        
+                    </tr>
+                    
+                </thead>
+                
+                
+            
+                <tbody id="cuerpoAlta">
+                    
+                    <% alumnosAlta.forEach( (i)=> { %>
+
+                        <tr>
+                            <td><%= i.dni %></td> 
+                            <td><%= i.nombre %> </td> 
+                            <td><%= i.apellidop %> </td> 
+                            <td><%= i.apellidom %> </td> 
+                          
+                            <td><%= i.telefono %> </td> 
+                            <td>
+                                <div>
+                                    <a class="btn btn-primary btn-sm" role="button" 
+                                    href="/historialmedico/<%= i.id %>">
+                                    Historial</a>
+                                    
+                                    
+                                </div>
+                                
+                                
+                                
+                            </td> 
+                            
+                            
+                            <td class="tdPrueba">
+                                <div>
+                                    
+                                    <button class="btn btn-secondary btn-sm" id="<%= i.id %> "  value="<%= i.id%>">  Alta </button>
+                                    <button class="btn btn-info btn-sm" id="<%= i.id %> "  value="<%= i.id%>">  Contac. </button>
+                                    <button class="btn btn-warning btn-sm " id="<%= i.id %> " value="<%= i.id%>"> Observ. </button>
+                                    <button class="btn  btn-danger btn-sm " id="<%= i.id %> " value="<%= i.id%>"> Confirm. </button>
+                                    
+                                    
+                                </div>
+                                
+                            </td>
+                            
+                            
+                        </tr>
+                        
+                        
+                        
+                        <% }) %>
+                        
+                        
+                    </tbody>
+                    
+                    
+                </table>
+                
+            </div>
+            
+        </div>
+        <div>
+    
+            <button id="bt0" class="btn btn-secondary">Mostrar personas alta</button>
+        </div>
+        <div class="card mt-2" id="toggle0">
+            
+            <div class="card-header text-white bg-secondary">
+                <b>
+                    Personas de alta
+                </b>
+            </div>
+    
+            <div class="card-body">
+                <table class="table" id="myTable0">
+                    <thead>
+    
+    
+                        <tr>
+                            <th>DNI</th>
+                            <th>Nombre</th>
+                            <th>Apellido Paterno</th>
+                            <th>Apellido Materno</th>
+                           
+                            <th>Teléfono</th>
+                            <th>Historial</th>
+                            <th>Actualizar estado de salud</th>
+    
+    
+                        </tr>
+                        
+                    </thead>
+                    
+                    
+                
+                    <tbody id="cuerpoCero">
+    
+                        <% alumnosCero.forEach( (i)=> { %>
+    
+                            <tr>
+                                <td><%= i.dni %></td> 
+                                <td><%= i.nombre %> </td> 
+                                <td><%= i.apellidop %> </td> 
+                                <td><%= i.apellidom %> </td> 
+                              
+                                <td><%= i.telefono %> </td> 
+                                <td>
+                                    <div>
+                                        <a class="btn btn-primary btn-sm" role="button" 
+                                        href="/historialmedico/<%= i.id %>">
+                                       Historial</a>
+    
+    
+                                    </div>
+                                    
+                                        
+    
+                                </td> 
+    
+    
+                                <td class="tdPrueba">
+                                    <div>
+                                        
+                                        <button class="btn btn-success btn-sm" id="alta<%= i.id %> "  value="<%= i.id%>"> Salud</button>
+                                        <button class="btn btn-info btn-sm" id="altaobs<%= i.id %> "  value="<%= i.id%>">  Contac.</button>
+                                        <button class="btn btn-warning btn-sm " id="obs<%= i.id %> " value="<%= i.id%>"> Observ. </button>
+                                        <button class="btn  btn-danger btn-sm " id="conf<%= i.id %> " value="<%= i.id%>"> Confirm. </button>
+                                        
+                                        
+                                    </div>
+                                    
+                                </td>
+                                
+                                
+                            </tr>
+                            
+                            
+                            
+                            <% }) %>
+                            
+                            
+                        </tbody>
+                        
+                        
+                    </table>
+                    
+                </div>
+                
+            </div>
+
+
+        <div class="mt-2 mb-2">
+
+            <button class="btn btn-info" id="bt2">Mostrar personas en contacto con confirmado</button>
+        </div>
+        <div class="card mt-2" id="toggle2" >
+            
+            <div class="card-header text-white bg-info mb-3">
+                <b>
+                    Personas en contacto con confirmados
+                </b>
+            </div>
+            
+            <div class="card-body">
+                <table class="table" id="myTable2">
+                    <thead>
+                
+                        <tr>
+                            <th>DNI</th>
+                            <th>Nombre</th>
+                            <th>Apellido Paterno</th>
+                            <th>Apellido Materno</th>
+                            
+                            <th>Teléfono</th>
+                            <th>Historial</th>
+                            <th>Actualizar estado de salud</th>
+                            
+                            
+                        </tr>
+                        
+                    </thead>
+ 
+                    <tbody id="cuerpoObsAlta">
+                        
+                        <% alumnosAltaObservacion.forEach( (i)=> { %>
+                            
+                            <tr>
+                                <td><%= i.dni %></td> 
+                                <td><%= i.nombre %> </td> 
+                                <td><%= i.apellidop %> </td> 
+                                <td><%= i.apellidom %> </td> 
+                                
+                                <td><%= i.telefono %> </td> 
+                                <td>
+                                    <div>
+                                        <a class="btn btn-primary btn-sm" role="button" 
+                                        href="/historialmedico/<%= i.id %>">
+                                        Historial</a>
+                                        
+                                        
+                                    </div>                                    
+                                </td>                         
+                                <td class="tdPrueba">
+                                    <div >
+                                        <button class="btn btn-success btn-sm" id="<%= i.id %> " value="<%= i.id%>"> Salud </button>
+                                        <button class="btn btn-secondary btn-sm" id="<%= i.id %> "  value="<%= i.id%>"> Alta </button>
+                                        <button class="btn btn-warning btn-sm" id="<%= i.id %>  " value="<%= i.id%>"> Obser. </button>
+                                        <button class="btn  btn-danger btn-sm" id="<%= i.id %> " value="<%= i.id%>"> Confirm. </button>
+                                        
+                                    </div>
+                                </td>
+                            </tr>
+                
+                            <% }) %>
+                   
+                        </tbody>
+                        
+                        
+                    </table>
+                    
+                </div>
+                
+            </div>
+            <div class="mt-2 mb-2">
+
+                <button class="btn btn-warning" id="bt3">Mostrar personas observado</button>
+            </div>
+            <div class="card mt-2" id="toggle3">
+                
+                <div class="card-header text-white bg-warning ">
+                    <b>
+                        Personas observadas
+                    </b>
+                </div>
+                
+                <div class="card-body ">
+                    <table class="table" id="myTable3">
+                        <thead>
+                            
+                            
+                            <tr>
+                                <th>DNI</th>
+                                <th>Nombre</th>
+                                <th>Apellido Paterno</th>
+                                <th>Apellido Materno</th>
+                               
+                                <th>Teléfono</th>
+                                <th>Historial</th>
+                                <th>Actualizar estado de salud</th>
+                                
+                                
+                            </tr>
+                            
+                        </thead>
+                        
+                        
+                        
+                        <tbody id="cuerpoObs">
+                            
+                            <% alumnosObservados.forEach( (i)=> { %>
+                                
+                                <tr>
+                                    <td><%= i.dni %></td> 
+                                    <td><%= i.nombre %> </td> 
+                                    <td><%= i.apellidop %> </td> 
+                                    <td><%= i.apellidom %> </td> 
+                                    
+                                    <td><%= i.telefono %> </td> 
+                                    <td>
+                                        <div>
+                                            
+                                            <div>
+                                                
+                                                <a class="btn btn-primary btn-sm" role="button" 
+                                                href="/historialmedico/<%= i.id %>">
+                                                Historial</a>
+                                                
+                                                
+                                                
+                                            </div>
+                                            
+                                            
+                                            
+                                        </div>
+                                        
+                                        
+                                        
+                                    </td> 
+                                    
+                                    <td class="tdPrueba">
+                                        <div >
+                                            
+                                            <button class="btn btn-success btn-sm" id="<%= i.id %> " value="<%= i.id%>"> Salud</button>
+                                            <button class="btn btn-secondary btn-sm" id="<%= i.id %> "  value="<%= i.id%>"> Alta </button>
+                                            <button class="btn btn-info btn-sm" id="<%= i.id %> " value="<%= i.id%>"> Contac.</button>
+                                            <button class="btn btn-danger btn-sm" id="<%= i.id %> " value="<%= i.id%>"> Confirm.</button>
+                                            
+                                        </div>
+                                        
+                                    </td>
+                                    
+                                    
+                                </tr>
+                                
+                                
+                                
+                                <% }) %>
+                                
+                                
+                            </tbody>
+                            
+                            
+                        </table>
+                        
+                    </div>
+                    
+                </div>
+                <div class="mt-2 mb-2">
+
+                    <button   class="btn btn-danger" id="bt4">Mostrar personas COVID-19 confirmado</button>
+                </div>
+                <div class="card mt-2 " id="toggle4">
+                    
+                    <div class="card-header text-white bg-danger">
+                        <b>
+                            Casos COVID-19 confirmados
+                        </b>
+                    </div>
+                    
+                    <div class="card-body">
+                        <table class="table" id="myTable4">
+                            <thead>
+                                
+                                
+                                <tr>
+                                    <th>DNI</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido Paterno</th>
+                                    <th>Apellido Materno</th>
+                                   
+                                    <th>Teléfono</th>
+                                    <th>Historial</th>
+                                    <th>Actualizar estado de salud</th>
+                                    
+                                    
+                                </tr>
+                                
+                            </thead>
+                            
+                            
+                            
+                            <tbody id="cuerpoConf">
+                                
+                                <% alumnosConfirmados.forEach( (i)=> { %>
+                                    
+                                    <tr>
+                                        <td><%= i.dni %></td> 
+                                        <td><%= i.nombre %> </td> 
+                                        <td><%= i.apellidop %> </td> 
+                                        <td><%= i.apellidom %> </td> 
+                                        
+                                       
+                                        <td><%= i.telefono %> </td> 
+                                        <td>
+                                            
+                                            <div>
+                                                <a class="btn btn-primary btn-sm" role="button" 
+                                                href="/historialmedico/<%= i.id %>">
+                                                Historial</a>
+                                                
+                                                
+                                                
+                                            </div>
+                                            
+                                            
+                                            
+                                            
+                                        </td> 
+                                        
+                                        
+                                        
+                                        <td class="tdPrueba">
+                                            <div >
+                                                <button class="btn btn-success btn-sm" id="<%= i.id %> " value="<%= i.id%>"> Salud. </button>
+                                                <button class="btn btn-secondary btn-sm" id="<%= i.id %> "  value="<%= i.id%>"> Alta </button>
+                                                <button class="btn btn-info btn-sm" id="<%= i.id %> " value="<%= i.id%>"> Contac. </button>
+                                                <button class="btn btn-warning btn-sm" id="<%= i.id %> " value="<%= i.id%>"> Obser.</button>
+                                                
+                                            </div>
+                                            
+                                        </td>
+                                        
+                                        
+                                    </tr>
+                                    
+                                    
+                                    
+                                    <% }) %>
+                                    
+                                    
+                                </tbody>
+                                
+                                
+                            </table>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                    
+                    
+                    
+                    <script src="/js/listasdinamicas.js"></script>
+                    <script src="/js/toogle.js"></script>
+                </body>
+                <div>
+
+                    <%- include('footer') %>
+                </div>
+                </html>
